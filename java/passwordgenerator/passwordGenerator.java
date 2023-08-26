@@ -1,7 +1,8 @@
 public class passwordGenerator {
 
 	public static void main(String[] args){
-		System.out.println("Hello world");
+		generator g = new generator();
+		System.out.println(g.generatePassword());
 	}
 
 }
