@@ -10,15 +10,9 @@ public class generator {
         private passwordCharacters customSelection;
 
         private int length;
-        private String password;
-        
-        public generator(){
-            this.customSelection = new passwordCharacters();
-            this.length = 6;
-            customGenerator();
-        }
+        private String password;      
 
-        public generator(int length, int option){
+        public generator(int length, int option, Scanner scanner){
 
             this.length = length;
             
@@ -35,10 +29,15 @@ public class generator {
                 case 3:
                     this.customSelection = this.charactersNumbers;
                     break;
-                case 4:
-                    this.customSelection = new passwordCharacters(customGenerator());
+                default:
                     break;
             }
+        }
+
+        public generator(int length, String a, String b, String c, String d){
+
+            this.length = length;
+            this.customSelection = new passwordCharacters(customGenerator(a, b, c, d));
         }
 
         public String generatePassword(){
@@ -53,37 +52,25 @@ public class generator {
             return p.toString();
         }
 
-        public String customGenerator(){
-            Scanner scanner = new Scanner(System.in);
+        public String customGenerator(String a, String b, String c, String d){
             String s = new String();
             
-            System.out.println("Você deseja que sua senha possa conter letras maiúsculas? ");
-            String r1 = scanner.nextLine();
-            System.out.println("Você deseja que sua senha possa conter letras minúsculas? ");
-            String r2 = scanner.nextLine();
-            System.out.println("Você deseja que sua senha possa conter números? ");
-            String r3 = scanner.nextLine();
-            System.out.println("Você deseja que sua senha possa conter símbolos? ");
-            String r4 = scanner.nextLine();
 
-            scanner.close();
-
-            if(r1.equals("S") || r1.equals("s")){
+            if(a.equals("S") || a.equals("s")){
                 s = s + this.charactersUpperCase.getCharacters();
             }
 
-            if(r2.equals("S") || r2.equals("s")){
+            if(b.equals("S") || b.equals("s")){
                 s = s + this.charactersLowerCase.getCharacters();
             }
 
-            if(r3.equals("S") || r3.equals("s")){
+            if(c.equals("S") || c.equals("s")){
                 s = s + this.charactersNumbers.getCharacters();
             }
 
-            if(r4.equals("S") || r4.equals("s")){
+            if(d.equals("S") || d.equals("s")){
                 s = s + this.charactersSymbols.getCharacters();
             }
-
             return s;
         }
 
