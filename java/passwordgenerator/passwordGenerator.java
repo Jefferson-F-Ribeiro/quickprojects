@@ -12,6 +12,8 @@ public class passwordGenerator {
 		int option = 7;
 		boolean test = true;
 
+
+		try{
 		while(test){
 		System.out.println("Escolha uma das opções abaixo: \n");
 
@@ -29,47 +31,54 @@ public class passwordGenerator {
 			System.out.println("\nEncerrando...");
 		}
 
-		else{
+		if(c != 0 || c != 1 || c != 2 || c != 3 || c != 4 ){
+			throw new Exception();
+		}
 
-		System.out.println("Quantos caracteres deve ter sua senha? ");
+			else{
 
-		int l = scanner.nextInt();
+			System.out.println("Quantos caracteres deve ter sua senha? ");
+
+			int l = scanner.nextInt();
 				
-		switch(c){			
-			case 0:
-				option = 0;
-				break;
-			case 1:
-				option = 1;
-				break;
-			case 2:
-				option = 2;
-				break;
-			case 3:
-				option = 3;	
-				break;
-			case 4:
-				option = 4;
-				break;
-			case 5:
-				System.out.println("Você deseja que sua senha possa conter letras maiúsculas? ");
-            	String r1 = scanner.next();
-            	System.out.println("Você deseja que sua senha possa conter letras minúsculas? ");
-            	String r2 = scanner.next();
-            	System.out.println("Você deseja que sua senha possa conter números? ");
-            	String r3 = scanner.next();
-            	System.out.println("Você deseja que sua senha possa conter símbolos? ");
-            	String r4 = scanner.next();
-				generator g1 = new generator(l,r1,r2,r3,r4);
-				System.out.println("\nA sua nova senha é: " + g1.generatePassword() + "\n");
-				break;			
-		}
+				switch(c){			
+					case 0:
+						option = 0;
+						break;
+					case 1:
+						option = 1;
+						break;
+					case 2:
+						option = 2;
+						break;
+					case 3:
+						option = 3;	
+						break;
+					case 4:
+						option = 4;
+						break;
+					case 5:
+						System.out.println("Você deseja que sua senha possa conter letras maiúsculas? ");
+            			String r1 = scanner.next();
+            			System.out.println("Você deseja que sua senha possa conter letras minúsculas? ");
+            			String r2 = scanner.next();
+            			System.out.println("Você deseja que sua senha possa conter números? ");
+            			String r3 = scanner.next();
+            			System.out.println("Você deseja que sua senha possa conter símbolos? ");
+            			String r4 = scanner.next();
+						generator g1 = new generator(l,r1,r2,r3,r4);
+						System.out.println("\nA sua nova senha é: " + g1.generatePassword() + "\n");
+						break;
+				}
 
-		if(option == 0 || option == 1 || option == 2 || option == 3 || option == 4 ){
-			generator g = new generator(l,option,scanner);
-			System.out.println("\nA sua nova senha é: " + g.generatePassword() + "\n");
-		}
-		}
+					if(option == 0 || option == 1 || option == 2 || option == 3 || option == 4 ){
+						generator g = new generator(l,option,scanner);
+						System.out.println("\nA sua nova senha é: " + g.generatePassword() + "\n");
+					}
+				}
+			}
+		}catch(Exception e){
+			System.out.println("Valor inválido");
 		}
 	}
 }
