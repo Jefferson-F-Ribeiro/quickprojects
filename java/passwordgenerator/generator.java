@@ -61,14 +61,19 @@ public class generator {
             Random r = new Random();
 
             char upperCaseChar = (char) ('A' + r.nextInt(26));
+            char symbolChar = this.charactersSymbols.getCharacters().charAt(r.nextInt(this.charactersSymbols.getCharacters().length()));
 
             StringBuilder password = new StringBuilder();
-            for(int i=1; i<this.length; i++){
-                int index = r.nextInt(this.customSelection.getCharacters().length());
-                password.append(this.customSelection.getCharacters().charAt(index));
+            
+            if(this.length > 4){
+                for(int i=1; i<this.length; i++){
+                    int index = r.nextInt(this.customSelection.getCharacters().length());
+                    password.append(this.customSelection.getCharacters().charAt(index));
+                }
             }
 
             password.insert(r.nextInt(password.length() + 1), upperCaseChar);
+            password.insert(r.nextInt(password.length() + 1), symbolChar);
 
             return password.toString();
         }
