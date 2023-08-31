@@ -12,6 +12,9 @@ public class passwordGenerator {
 		int option = 7;
 		boolean test = true;
 
+		generator gtest = new generator(2);
+		System.out.println(gtest.exclusiveGeneratePassword());
+
 
 		try{
 			while(test){
