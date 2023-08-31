@@ -40,6 +40,11 @@ public class generator {
             this.customSelection = new passwordCharacters(customGenerator(a, b, c, d));
         }
 
+        public generator(int length){
+            this.length = length;
+            this.customSelection = new passwordCharacters(customGenerator("s","s","s","s"));
+        }
+
         public String generatePassword(){
             StringBuilder p = new StringBuilder();
             Random r = new Random();
@@ -50,6 +55,22 @@ public class generator {
             }
 
             return p.toString();
+        }
+
+        public String exclusiveGeneratePassword(){
+            Random r = new Random();
+
+            char upperCaseChar = (char) ('A' + r.nextInt(26));
+
+            StringBuilder password = new StringBuilder();
+            for(int i=1; i<this.length; i++){
+                int index = r.nextInt(this.customSelection.getCharacters().length());
+                password.append(this.customSelection.getCharacters().charAt(index));
+            }
+
+            password.insert(r.nextInt(password.length() + 1), upperCaseChar);
+
+            return password.toString();
         }
 
         public String customGenerator(String a, String b, String c, String d){
