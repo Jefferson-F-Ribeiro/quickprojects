@@ -60,13 +60,15 @@ public class generator {
         public String exclusiveGeneratePassword(){
             Random r = new Random();
 
-            char upperCaseChar = (char) ('A' + r.nextInt(26));
+            char upperCaseChar = this.charactersUpperCase.getCharacters().charAt(r.nextInt(this.charactersUpperCase.getCharacters().length()));
             char symbolChar = this.charactersSymbols.getCharacters().charAt(r.nextInt(this.charactersSymbols.getCharacters().length()));
+            char loweCaseChar = this.charactersLowerCase.getCharacters().charAt(r.nextInt(this.charactersLowerCase.getCharacters().length()));
+            char numbersChar = this.charactersNumbers.getCharacters().charAt(r.nextInt(this.charactersNumbers.getCharacters().length()));
 
             StringBuilder password = new StringBuilder();
             
             if(this.length > 4){
-                for(int i=1; i<this.length; i++){
+                for(int i=0; i<this.length-2; i++){
                     int index = r.nextInt(this.customSelection.getCharacters().length());
                     password.append(this.customSelection.getCharacters().charAt(index));
                 }
@@ -74,6 +76,8 @@ public class generator {
 
             password.insert(r.nextInt(password.length() + 1), upperCaseChar);
             password.insert(r.nextInt(password.length() + 1), symbolChar);
+            password.insert(r.nextInt(password.length() + 1), loweCaseChar);
+            password.insert(r.nextInt(password.length() + 1), numbersChar);
 
             return password.toString();
         }
