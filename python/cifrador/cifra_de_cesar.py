@@ -15,8 +15,13 @@ def cifra_de_cesar(texto, deslocamento):
     
     return resultado
 
+def decifra_cesar(texto_cifrado, deslocamento):
+    return cifra_de_cesar(texto_cifrado, -deslocamento)
+
 texto_original = "Testando o cifrador"
 deslocamento = 3
 texto_cifrado = cifra_de_cesar(texto_original, deslocamento)
+texto_decifrado = decifra_cesar(texto_cifrado, deslocamento)
 print("Texto original:", texto_original)
 print("Texto cifrado:", texto_cifrado)
+print("Texto decifrado:", texto_decifrado)
