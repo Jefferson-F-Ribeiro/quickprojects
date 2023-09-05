@@ -18,10 +18,16 @@ def cifra_de_cesar(texto, deslocamento):
 def decifra_cesar(texto_cifrado, deslocamento):
     return cifra_de_cesar(texto_cifrado, -deslocamento)
 
-texto_original = "Testando o cifrador"
-deslocamento = 3
-texto_cifrado = cifra_de_cesar(texto_original, deslocamento)
-texto_decifrado = decifra_cesar(texto_cifrado, deslocamento)
-print("Texto original:", texto_original)
-print("Texto cifrado:", texto_cifrado)
-print("Texto decifrado:", texto_decifrado)
+def main():
+    print("Bem-vindo à Cifra de César!")
+    texto_original = input("Digite o texto a ser cifrado: ")
+    deslocamento = int(input("Digite o valor de deslocamento (chave): "))
+    
+    texto_cifrado = cifra_de_cesar(texto_original, deslocamento)
+    texto_decifrado = decifra_cesar(texto_cifrado, deslocamento)
+    
+    print("\nTexto cifrado:", texto_cifrado)
+    print("Texto decifrado:", texto_decifrado)
+
+if __name__ == "__main__":
+    main()
