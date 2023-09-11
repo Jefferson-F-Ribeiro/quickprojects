@@ -43,3 +43,18 @@ def decifrar_transposicao(texto_cifrado, chave):
             texto_decifrado += matriz[linha][coluna]
 
     return texto_decifrado
+
+def main():
+    print("Cifrador de Transposição")
+
+    chave = input("Digite a chave de permutação (por exemplo, '2314'): ")
+    texto_original = input("Digite o texto a ser cifrado: ")
+
+    texto_cifrado = cifrar_transposicao(texto_original, chave)
+    texto_decifrado = decifrar_transposicao(texto_cifrado, chave)
+
+    print("Texto cifrado:", texto_cifrado)
+    print("Texto decifrado:", texto_decifrado)
+
+if __name__ == "__main__":
+    main()
