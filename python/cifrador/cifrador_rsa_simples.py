@@ -58,7 +58,7 @@ def decrypt(private_key, ciphertext):
     return ''.join(decrypted)
 
 def main():
-    bits = 16  # O tamanho dos números primos (ajuste conforme necessário)
+    bits = int(input("Digite o tamanho dos números primos (em bits): "))
     
     print("Gerando chaves...")
     public_key, private_key = generate_keypair(bits)
