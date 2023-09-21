@@ -13,30 +13,46 @@ def bubble_sort(arr):
         if not swapped:
             break
 
-def main():
-    try:
-        n = int(input("Digite o número de elementos no array: "))
-        arr = []
-        for i in range(n):
-            element = int(input(f"Digite o elemento {i + 1}: "))
-            arr.append(element)
+class BubbleSortTestCase:
+    def __init__(self, name, arr, sorting_function):
+        self.name = name
+        self.arr = arr
+        self.sorting_function = sorting_function
 
+    def run(self):
+        print(f"Caso de Teste: {self.name}")
         print("Array original:")
-        print(arr)
+        print(self.arr)
 
         start_time = time.time()
-        bubble_sort(arr)
+        self.sorting_function(self.arr)  # Chama a função de ordenação fornecida
         end_time = time.time()
 
         print("Array ordenado:")
-        print(arr)
+        print(self.arr)
 
         elapsed_time = end_time - start_time
         print(f"Tempo de ordenação: {elapsed_time:.6f} segundos")
+        print("\n")
 
-    except ValueError:
-        print("Por favor, digite números inteiros válidos.")
+def main():
+    # Caso de Teste 1: Array já ordenado em ordem crescente.
+    test_case_1 = BubbleSortTestCase("Array Crescente", [1, 2, 3, 4, 5], bubble_sort)
+
+    # Caso de Teste 2: Array já ordenado em ordem decrescente.
+    test_case_2 = BubbleSortTestCase("Array Decrescente", [5, 4, 3, 2, 1], bubble_sort)
+
+    # Caso de Teste 3: Array com elementos aleatórios.
+    test_case_3 = BubbleSortTestCase("Array Aleatório", [7, 2, 4, 1, 8, 5, 3, 6], bubble_sort)
+
+    # Caso de Teste 4: Array com elementos repetidos.
+    test_case_4 = BubbleSortTestCase("Array com Repetição", [3, 2, 1, 2, 3, 1], bubble_sort)
+
+    # Executar os casos de teste
+    test_case_1.run()
+    test_case_2.run()
+    test_case_3.run()
+    test_case_4.run()
 
 if __name__ == "__main__":
     main()
-    
