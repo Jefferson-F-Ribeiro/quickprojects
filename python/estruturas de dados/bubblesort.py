@@ -66,19 +66,34 @@ def main():
     repeated_array = [random.randint(1, 10) for _ in range(50)]
     test_case_8 = BubbleSortTestCase("Array com Repetição 50", repeated_array, bubble_sort)
 
-    # Caso de Teste 1: Array já ordenado em ordem crescente (tamanho 100).
+    # Caso de Teste 9: Array já ordenado em ordem crescente (tamanho 100).
     test_case_9 = BubbleSortTestCase("Array Crescente 100", list(range(1, 101)), bubble_sort)
 
-    # Caso de Teste 2: Array já ordenado em ordem decrescente (tamanho 100).
+    # Caso de Teste 10: Array já ordenado em ordem decrescente (tamanho 100).
     test_case_10 = BubbleSortTestCase("Array Decrescente 100", list(range(100, 0, -1)), bubble_sort)
 
-    # Caso de Teste 3: Array com elementos aleatórios (tamanho 100).
+    # Caso de Teste 11: Array com elementos aleatórios (tamanho 100).
     random_array = generate_random_array(100)
     test_case_11 = BubbleSortTestCase("Array Aleatório 100", random_array, bubble_sort)
 
-    # Caso de Teste 4: Array com elementos repetidos (tamanho 100).
+    # Caso de Teste 12: Array com elementos repetidos (tamanho 100).
     repeated_array = [random.randint(1, 10) for _ in range(100)]
     test_case_12 = BubbleSortTestCase("Array com Repetição 100", repeated_array, bubble_sort)
+
+    # Caso de Teste 13: Array já ordenado em ordem crescente (tamanho 500).
+    test_case_13 = BubbleSortTestCase("Array Crescente 500", list(range(1, 501)), bubble_sort)
+
+    # Caso de Teste 14: Array já ordenado em ordem decrescente (tamanho 500).
+    test_case_14 = BubbleSortTestCase("Array Decrescente 500", list(range(500, 0, -1)), bubble_sort)
+
+    # Caso de Teste 15: Array com elementos aleatórios (tamanho 500).
+    random_array = generate_random_array(500)
+    test_case_15 = BubbleSortTestCase("Array Aleatório 500", random_array, bubble_sort)
+
+    # Caso de Teste 16: Array com elementos repetidos (tamanho 500).
+    repeated_array = [random.randint(1, 10) for _ in range(500)]
+    test_case_16 = BubbleSortTestCase("Array com Repetição 500", repeated_array, bubble_sort)
+
 
 
     # Executar os casos de teste
@@ -94,6 +109,10 @@ def main():
     test_case_10.run()
     test_case_11.run()
     test_case_12.run()
+    test_case_13.run()
+    test_case_14.run()
+    test_case_15.run()
+    test_case_16.run()
 
 if __name__ == "__main__":
     main()
