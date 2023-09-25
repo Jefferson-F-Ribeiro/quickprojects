@@ -11,19 +11,18 @@ def quick_sort(arr):
 
     return quick_sort(left) + middle + quick_sort(right)
 
-def main():
-    try:
-        n = int(input("Digite o número de elementos no array: "))
-        arr = []
-        for i in range(n):
-            element = int(input(f"Digite o elemento {i + 1}: "))
-            arr.append(element)
+class QuickSortTestCase:
+    def __init__(self, name, arr):
+        self.name = name
+        self.arr = arr
 
+    def run(self):
+        print(f"Caso de Teste: {self.name}")
         print("Array original:")
-        print(arr)
+        print(self.arr)
 
         start_time = time.time()
-        sorted_arr = quick_sort(arr)
+        sorted_arr = quick_sort(self.arr)
         end_time = time.time()
 
         print("Array ordenado:")
@@ -31,9 +30,26 @@ def main():
 
         elapsed_time = end_time - start_time
         print(f"Tempo de ordenação: {elapsed_time:.6f} segundos")
+        print("\n")
 
-    except ValueError:
-        print("Por favor, digite números inteiros válidos.")
+def main():
+    # Caso de Teste 1: Array aleatório com 5 elementos.
+    test_case_1 = QuickSortTestCase("Array Aleatório", [5, 2, 1, 4, 3])
+
+    # Caso de Teste 2: Array crescente com 5 elementos.
+    test_case_2 = QuickSortTestCase("Array Crescente", [1, 2, 3, 4, 5])
+
+    # Caso de Teste 3: Array decrescente com 5 elementos.
+    test_case_3 = QuickSortTestCase("Array Decrescente", [5, 4, 3, 2, 1])
+
+    # Caso de Teste 4: Array com elementos repetidos com 5 elementos.
+    test_case_4 = QuickSortTestCase("Array com Repetição", [3, 2, 1, 2, 3])
+
+    # Executar os casos de teste
+    test_case_1.run()
+    test_case_2.run()
+    test_case_3.run()
+    test_case_4.run()
 
 if __name__ == "__main__":
     main()
