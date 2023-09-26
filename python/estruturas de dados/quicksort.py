@@ -1,4 +1,5 @@
 import time
+import random
 
 def quick_sort(arr):
     if len(arr) <= 1:
@@ -32,6 +33,9 @@ class QuickSortTestCase:
         print(f"Tempo de ordenação: {elapsed_time:.6f} segundos")
         print("\n")
 
+def generate_random_array(size):
+    return [random.randint(1, 1000) for _ in range(size)]
+
 def main():
     # Caso de Teste 1: Array aleatório com 5 elementos.
     test_case_1 = QuickSortTestCase("Array Aleatório", [5, 2, 1, 4, 3])
@@ -45,11 +49,30 @@ def main():
     # Caso de Teste 4: Array com elementos repetidos com 5 elementos.
     test_case_4 = QuickSortTestCase("Array com Repetição", [3, 2, 1, 2, 3])
 
+    # Caso de Teste 5: Array aleatório com 50 elementos.
+    random_array_1 = generate_random_array(50)
+    test_case_5 = QuickSortTestCase("Array Aleatório 50", random_array_1)
+
+    # Caso de Teste 6: Array crescente com 50 elementos.
+    test_case_6 = QuickSortTestCase("Array Crescente 50", list(range(1, 51)))
+
+    # Caso de Teste 7: Array decrescente com 50 elementos.
+    test_case_7 = QuickSortTestCase("Array Decrescente 50", list(range(50, 0, -1)))
+
+    # Caso de Teste 8: Array com elementos repetidos com 50 elementos.
+    repeated_array = [random.randint(1, 10) for _ in range(50)]
+    test_case_8 = QuickSortTestCase("Array com Repetição 50", repeated_array)
+
+
     # Executar os casos de teste
     test_case_1.run()
     test_case_2.run()
     test_case_3.run()
     test_case_4.run()
+    test_case_5.run()
+    test_case_6.run()
+    test_case_7.run()
+    test_case_8.run()
 
 if __name__ == "__main__":
     main()
