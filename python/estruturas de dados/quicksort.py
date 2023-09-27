@@ -63,6 +63,20 @@ def main():
     repeated_array = [random.randint(1, 10) for _ in range(50)]
     test_case_8 = QuickSortTestCase("Array com Repetição 50", repeated_array)
 
+    # Caso de Teste 9: Array aleatório com 100 elementos.
+    random_array_1 = generate_random_array(100)
+    test_case_9 = QuickSortTestCase("Array Aleatório 100", random_array_1)
+
+    # Caso de Teste 10: Array crescente com 100 elementos.
+    test_case_10 = QuickSortTestCase("Array Crescente 100", list(range(1, 101)))
+
+    # Caso de Teste 11: Array decrescente com 100 elementos.
+    test_case_11 = QuickSortTestCase("Array Decrescente 100", list(range(100, 0, -1)))
+
+    # Caso de Teste 12: Array com elementos repetidos com 100 elementos.
+    repeated_array = [random.randint(1, 10) for _ in range(100)]
+    test_case_12 = QuickSortTestCase("Array com Repetição 100", repeated_array)
+
 
     # Executar os casos de teste
     test_case_1.run()
@@ -73,6 +87,11 @@ def main():
     test_case_6.run()
     test_case_7.run()
     test_case_8.run()
+    test_case_9.run()
+    test_case_10.run()
+    test_case_11.run()
+    test_case_12.run()
+
 
 if __name__ == "__main__":
     main()
