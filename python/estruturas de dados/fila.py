@@ -23,13 +23,45 @@ class Fila:
     def tamanho(self):
         return len(self.items)
 
+    def imprimir(self):
+        print("Elementos da fila:", self.items)
+
+def exibir_menu():
+    print("\nMenu:")
+    print("1. Enfileirar (Adicionar elemento)")
+    print("2. Desenfileirar (Remover elemento)")
+    print("3. Frente (Consultar o elemento na frente)")
+    print("4. Imprimir toda a fila")
+    print("5. Sair")
+
 if __name__ == "__main__":
     fila = Fila()
 
-    fila.enfileirar(1)
-    fila.enfileirar(2)
-    fila.enfileirar(3)
+    while True:
+        exibir_menu()
+        escolha = input("Escolha uma opção: ")
 
-    print("Elementos da fila:")
-    while not fila.vazia():
-        print(fila.desenfileirar())
+        if escolha == "1":
+            elemento = input("Digite o elemento a ser enfileirado: ")
+            fila.enfileirar(elemento)
+            print(f"{elemento} foi enfileirado.")
+        elif escolha == "2":
+            if not fila.vazia():
+                elemento_removido = fila.desenfileirar()
+                print(f"{elemento_removido} foi removido da fila.")
+            else:
+                print("A fila está vazia.")
+        elif escolha == "3":
+            if not fila.vazia():
+                elemento_frente = fila.frente()
+                print(f"O elemento na frente da fila é: {elemento_frente}")
+            else:
+                print("A fila está vazia.")
+        elif escolha == "4":
+            fila.imprimir()
+        elif escolha == "5":
+            break
+        else:
+            print("Escolha uma opção válida.")
+
+    print("Programa encerrado.")
