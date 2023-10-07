@@ -45,20 +45,33 @@ class LinkedList:
             current = current.next
         print("None")
 
-# Exemplo de uso:
 if __name__ == "__main__":
     linked_list = LinkedList()
-    
-    linked_list.append(1)
-    linked_list.append(2)
-    linked_list.append(3)
-    linked_list.append(4)
-    linked_list.append(5)
 
-    linked_list.display()  # Saída: 1 -> 2 -> 3 -> 4 -> 5 -> None
+    while True:
+        print("\nMenu:")
+        print("1. Adicionar elemento")
+        print("2. Inserir no início")
+        print("3. Excluir elemento")
+        print("4. Exibir lista")
+        print("5. Sair")
 
-    linked_list.prepend(0)
-    linked_list.display()  # Saída: 0 -> 1 -> 2 -> 3 -> 4 -> 5 -> None
+        escolha = input("Escolha uma opção: ")
 
-    linked_list.delete(3)
-    linked_list.display()  # Saída: 0 -> 1 -> 2 -> 4 -> 5 -> None
+        if escolha == "1":
+            elemento = int(input("Digite o elemento a ser adicionado: "))
+            linked_list.append(elemento)
+        elif escolha == "2":
+            elemento = int(input("Digite o elemento a ser inserido no início: "))
+            linked_list.prepend(elemento)
+        elif escolha == "3":
+            elemento = int(input("Digite o elemento a ser excluído: "))
+            linked_list.delete(elemento)
+        elif escolha == "4":
+            linked_list.display()
+        elif escolha == "5":
+            break
+        else:
+            print("Escolha uma opção válida.")
+
+    print("Programa encerrado.")
