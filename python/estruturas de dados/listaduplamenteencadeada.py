@@ -58,22 +58,36 @@ class DoublyLinkedList:
             current = current.prev
         print("None")
 
-# Exemplo de uso:
 if __name__ == "__main__":
     doubly_linked_list = DoublyLinkedList()
-    
-    doubly_linked_list.append(1)
-    doubly_linked_list.append(2)
-    doubly_linked_list.append(3)
-    doubly_linked_list.append(4)
-    doubly_linked_list.append(5)
 
-    doubly_linked_list.display_forward()  # Saída: 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> None
+    while True:
+        print("\nMenu:")
+        print("1. Adicionar elemento")
+        print("2. Inserir no início")
+        print("3. Excluir elemento")
+        print("4. Exibir lista (Forward)")
+        print("5. Exibir lista (Backward)")
+        print("6. Sair")
 
-    doubly_linked_list.prepend(0)
-    doubly_linked_list.display_forward()  # Saída: 0 <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> None
+        escolha = input("Escolha uma opção: ")
 
-    doubly_linked_list.delete(3)
-    doubly_linked_list.display_forward()  # Saída: 0 <-> 1 <-> 2 <-> 4 <-> 5 <-> None
+        if escolha == "1":
+            elemento = int(input("Digite o elemento a ser adicionado: "))
+            doubly_linked_list.append(elemento)
+        elif escolha == "2":
+            elemento = int(input("Digite o elemento a ser inserido no início: "))
+            doubly_linked_list.prepend(elemento)
+        elif escolha == "3":
+            elemento = int(input("Digite o elemento a ser excluído: "))
+            doubly_linked_list.delete(elemento)
+        elif escolha == "4":
+            doubly_linked_list.display_forward()
+        elif escolha == "5":
+            doubly_linked_list.display_backward()
+        elif escolha == "6":
+            break
+        else:
+            print("Escolha uma opção válida.")
 
-    doubly_linked_list.display_backward()  # Saída: 5 <-> 4 <-> 2 <-> 1 <-> 0 <-> None
+    print("Programa encerrado.")
