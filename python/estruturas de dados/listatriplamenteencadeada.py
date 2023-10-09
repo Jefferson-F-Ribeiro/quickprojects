@@ -71,25 +71,41 @@ class TriplyLinkedList:
                 return
             current = current.next
 
-# Exemplo de uso:
 if __name__ == "__main__":
     triply_linked_list = TriplyLinkedList()
-    
-    triply_linked_list.append(1)
-    triply_linked_list.append(2)
-    triply_linked_list.append(3)
-    triply_linked_list.append(4)
-    triply_linked_list.append(5)
 
-    triply_linked_list.display_forward()  # Saída: 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> None
+    while True:
+        print("\nMenu:")
+        print("1. Adicionar elemento")
+        print("2. Inserir no início")
+        print("3. Excluir elemento")
+        print("4. Exibir lista (Forward)")
+        print("5. Exibir lista (Backward)")
+        print("6. Adicionar elemento na camada superior")
+        print("7. Sair")
 
-    triply_linked_list.prepend(0)
-    triply_linked_list.display_forward()  # Saída: 0 <-> 1 <-> 2 <-> 3 <-> 4 <-> 5 <-> None
+        escolha = input("Escolha uma opção: ")
 
-    triply_linked_list.delete(3)
-    triply_linked_list.display_forward()  # Saída: 0 <-> 1 <-> 2 <-> 4 <-> 5 <-> None
+        if escolha == "1":
+            elemento = int(input("Digite o elemento a ser adicionado: "))
+            triply_linked_list.append(elemento)
+        elif escolha == "2":
+            elemento = int(input("Digite o elemento a ser inserido no início: "))
+            triply_linked_list.prepend(elemento)
+        elif escolha == "3":
+            elemento = int(input("Digite o elemento a ser excluído: "))
+            triply_linked_list.delete(elemento)
+        elif escolha == "4":
+            triply_linked_list.display_forward()
+        elif escolha == "5":
+            triply_linked_list.display_backward()
+        elif escolha == "6":
+            elemento = int(input("Digite o elemento a ser adicionado na camada superior: "))
+            base_data = int(input("Digite o elemento base na camada inferior: "))
+            triply_linked_list.append_upper(elemento, base_data)
+        elif escolha == "7":
+            break
+        else:
+            print("Escolha uma opção válida.")
 
-    triply_linked_list.display_backward()  # Saída: 5 <-> 4 <-> 2 <-> 1 <-> 0 <-> None
-
-    triply_linked_list.append_upper(6, 2)
-    triply_linked_list.display_forward()  # Saída: 0 <-> 1 <-> 2 <-> 6 <-> 4 <-> 5 <-> None
+    print("Programa encerrado.")
