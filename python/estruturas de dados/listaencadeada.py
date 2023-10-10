@@ -1,3 +1,5 @@
+import random
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -25,7 +27,7 @@ class LinkedList:
 
     def delete(self, data):
         if not self.head:
-            return
+            raise ValueError("A lista está vazia")
 
         if self.head.data == data:
             self.head = self.head.next
@@ -37,6 +39,14 @@ class LinkedList:
                 current.next = current.next.next
                 return
             current = current.next
+
+    def empty(self):
+        self.head = None
+
+    def fill_random(self, n):
+        for _ in range(n):
+            elemento = random.randint(1, 100)  # Altere o intervalo conforme necessário
+            self.append(elemento)
 
     def display(self):
         current = self.head
@@ -53,8 +63,10 @@ if __name__ == "__main__":
         print("1. Adicionar elemento")
         print("2. Inserir no início")
         print("3. Excluir elemento")
-        print("4. Exibir lista")
-        print("5. Sair")
+        print("4. Esvaziar lista")
+        print("5. Preencher com elementos aleatórios")
+        print("6. Exibir lista")
+        print("7. Sair")
 
         escolha = input("Escolha uma opção: ")
 
@@ -66,10 +78,18 @@ if __name__ == "__main__":
             linked_list.prepend(elemento)
         elif escolha == "3":
             elemento = int(input("Digite o elemento a ser excluído: "))
-            linked_list.delete(elemento)
+            try:
+                linked_list.delete(elemento)
+            except ValueError as e:
+                print(e)
         elif escolha == "4":
-            linked_list.display()
+            linked_list.empty()
         elif escolha == "5":
+            n = int(input("Digite a quantidade de elementos aleatórios a serem adicionados: "))
+            linked_list.fill_random(n)
+        elif escolha == "6":
+            linked_list.display()
+        elif escolha == "7":
             break
         else:
             print("Escolha uma opção válida.")
