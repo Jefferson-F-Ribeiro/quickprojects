@@ -1,3 +1,5 @@
+import random
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -58,6 +60,16 @@ class DoublyLinkedList:
             current = current.prev
         print("None")
 
+    def empty(self):
+        self.head = None
+        self.tail = None
+
+    def fill_random(self, n):
+        self.empty()
+        for _ in range(n):
+            elemento = random.randint(1, 100)  # Altere o intervalo conforme necessário
+            self.append(elemento)
+
 if __name__ == "__main__":
     doubly_linked_list = DoublyLinkedList()
 
@@ -68,7 +80,9 @@ if __name__ == "__main__":
         print("3. Excluir elemento")
         print("4. Exibir lista (Forward)")
         print("5. Exibir lista (Backward)")
-        print("6. Sair")
+        print("6. Esvaziar lista")
+        print("7. Preencher com elementos aleatórios")
+        print("8. Sair")
 
         escolha = input("Escolha uma opção: ")
 
@@ -86,6 +100,11 @@ if __name__ == "__main__":
         elif escolha == "5":
             doubly_linked_list.display_backward()
         elif escolha == "6":
+            doubly_linked_list.empty()
+        elif escolha == "7":
+            n = int(input("Digite a quantidade de elementos aleatórios a serem adicionados: "))
+            doubly_linked_list.fill_random(n)
+        elif escolha == "8":
             break
         else:
             print("Escolha uma opção válida.")
