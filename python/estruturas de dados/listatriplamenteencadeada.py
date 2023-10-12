@@ -1,3 +1,5 @@
+import random
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -71,6 +73,16 @@ class TriplyLinkedList:
                 return
             current = current.next
 
+    def empty(self):
+        self.head = None
+        self.tail = None
+
+    def fill_random(self, n):
+        self.empty()
+        for _ in range(n):
+            elemento = random.randint(1, 100)  # Altere o intervalo conforme necessário
+            self.append(elemento)
+
 if __name__ == "__main__":
     triply_linked_list = TriplyLinkedList()
 
@@ -82,7 +94,9 @@ if __name__ == "__main__":
         print("4. Exibir lista (Forward)")
         print("5. Exibir lista (Backward)")
         print("6. Adicionar elemento na camada superior")
-        print("7. Sair")
+        print("7. Esvaziar lista")
+        print("8. Preencher com elementos aleatórios")
+        print("9. Sair")
 
         escolha = input("Escolha uma opção: ")
 
@@ -104,6 +118,11 @@ if __name__ == "__main__":
             base_data = int(input("Digite o elemento base na camada inferior: "))
             triply_linked_list.append_upper(elemento, base_data)
         elif escolha == "7":
+            triply_linked_list.empty()
+        elif escolha == "8":
+            n = int(input("Digite a quantidade de elementos aleatórios a serem adicionados: "))
+            triply_linked_list.fill_random(n)
+        elif escolha == "9":
             break
         else:
             print("Escolha uma opção válida.")
